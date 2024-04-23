@@ -28,7 +28,6 @@ public class Tree {
             else {   // Recursividade
                 insert(info, place.left);
             }
-
         }
 
         /*
@@ -46,7 +45,6 @@ public class Tree {
             else {   // Recursividade
                 insert(info, place.right);
             }
-
         }
     }
 
