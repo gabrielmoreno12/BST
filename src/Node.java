@@ -4,6 +4,28 @@ public class Node {
 
     Node(int info) {
         this.info = info;
-        left = right = null;
+        this.left = this.right = null;
     }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Node(").append(info).append(")");
+
+        if (left != null || right != null) {
+            sb.append(" [");
+            if (left != null) {
+                sb.append("left node: ").append(left.info);
+            }
+            if (left != null && right != null) {
+                sb.append(", ");
+            }
+            if (right != null) {
+                sb.append("right node: ").append(right.info);
+            }
+            sb.append("]");
+        }
+
+        return sb.toString();
+    }
+
 }

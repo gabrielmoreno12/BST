@@ -48,6 +48,59 @@ public class Tree {
         }
     }
 
+    // Método para remover um nó com a informação especificada
+    Node remove(int info, Node node) {
+        // Usa o método search para encontrar o nó a ser removido
+        Node nodeToRemove = search(root, info);
+
+        // Se o nó não for encontrado, imprime uma mensagem e retorna o nó atual
+        if (nodeToRemove == null) {
+            System.out.println("Node " + info + " not found");
+            return nodeToRemove;
+        }
+
+        // Caso o nó seja encontrado, implementa a lógica de remoção
+        if (nodeToRemove.left == null) {
+            // Caso 1: Nó sem filhos ou com apenas um filho
+            System.out.println("Node " + nodeToRemove.info + " removed");
+            return nodeToRemove.right;
+        } else if (nodeToRemove.right == null) {
+            System.out.println("Node " + nodeToRemove.info + " removed");
+            return nodeToRemove.left;
+        } else {
+            // Caso 2: Nó com dois filhos
+            int minValue = findMinValue(nodeToRemove.right);
+            System.out.println("Node " + nodeToRemove.info + " removed");
+            nodeToRemove.info = minValue;
+            nodeToRemove.right = remove(minValue, nodeToRemove.right);
+            return nodeToRemove;
+        }
+    }
+
+    // Método auxiliar para encontrar o menor valor na subárvore direita
+    int findMinValue(Node node) {
+        return (node.left == null) ? node.info : findMinValue(node.left);
+    }
+
+    // Métodos de busca
+    Node search(int info) {
+        return search(root, info);
+    }
+
+    Node search(Node place, int info) {
+        if (place == null) {
+            return null;
+        } else if (place.info == info) {
+            return place;
+        }
+
+        Node leftResult = search(place.left, info);
+        if (leftResult != null) {
+            return leftResult;
+        }
+
+        return search(place.right, info);
+    }
 
     // Navegação pela árvore
     void preOrder(Node place) {
