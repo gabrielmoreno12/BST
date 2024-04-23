@@ -23,9 +23,5 @@ class Main {
 
         tree.criarArquivoDOT(tree.root);
 
-
-
-
-
     }
 }

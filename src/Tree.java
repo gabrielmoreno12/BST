@@ -91,7 +91,7 @@ public class Tree {
             writer.write("digraph Arvore {\n");
             escreverDOTRecursivo(root, writer);
             writer.write("}\n");
-            System.out.println("Arquivo arvore.dot criado com sucesso!");
+            System.out.println("\nArquivo arvore.dot criado com sucesso!");
         } catch (IOException e) {
             System.err.println("Erro ao criar o arquivo DOT: " + e.getMessage());
         } finally {
