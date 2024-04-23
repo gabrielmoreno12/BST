@@ -24,7 +24,7 @@ class Main {
         tree.inOrder(tree.root);
 
         System.out.print("\nPOS-ORDER: ");
-        tree.posOrder(tree.root);
+        tree.postOrder(tree.root);
 
         tree.criarArquivoDOT(tree.root);
 

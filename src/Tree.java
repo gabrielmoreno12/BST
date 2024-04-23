@@ -53,34 +53,27 @@ public class Tree {
 
     // Navegação pela árvore
     void preOrder(Node place) {
-        System.out.print(" " + place.info);
-
-        if (place.left != null) {
+        if (place != null) {
+            System.out.print(" " + place.info);
             preOrder(place.left);
-        }
-        if (place.right != null) {
             preOrder(place.right);
         }
     }
 
     void inOrder(Node place) {
-        if (place.left != null) {
+        if (place != null) {
             inOrder(place.left);
-        }
-        if (place.right != null) {
+            System.out.print(" " + place.info);
             inOrder(place.right);
         }
-        System.out.print(" " + place.info);
     }
 
-    void posOrder(Node place) {
-        if (place.left != null) {
-            posOrder(place.left);
+    void postOrder(Node place) {
+        if (place != null) {
+            postOrder(place.left);
+            postOrder(place.right);
+            System.out.print(" " + place.info);
         }
-        if (place.right != null) {
-            posOrder(place.right);
-        }
-        System.out.print(" " + place.info);
     }
 
     // Método para criar um arquivo .dot com a estrutura da árvore
