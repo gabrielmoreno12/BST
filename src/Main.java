@@ -5,11 +5,16 @@ class Main {
     public static void main(String[] args) {
 
         Random rand = new Random();
+
+        // Criação de uma árvore nula
         Tree tree = new Tree();
 
-
-        for (int i=0; i<5; i++) {
-            tree.insert(rand.nextInt(10), tree.root);
+        /*
+        Uso do método insert() para inserir 10 nodos aleatórios na árvore
+        contendo valores aleatórios entre 0(inclusive) e 100
+         */
+        for (int i=0; i<10; i++) {
+            tree.insert(rand.nextInt(100), tree.root);
         }
 
         System.out.print("\nPRE-ORDER: ");
