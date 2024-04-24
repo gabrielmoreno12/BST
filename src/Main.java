@@ -1,22 +1,10 @@
-
-import java.util.Random;
-
 class Main {
     public static void main(String[] args) {
-
-        Random rand = new Random();
 
         // Criação de uma árvore nula
         Tree tree = new Tree();
 
-        /*
-        Uso do método insert() para inserir 10 nodos aleatórios na árvore
-        contendo valores aleatórios entre 0(inclusive) e 100
-         */
-//        for (int i=0; i<10; i++) {
-//            tree.insert(rand.nextInt(100), tree.root);
-//        }
-
+        // Método de inserção
         tree.insert(2, tree.root);
         tree.insert(1, tree.root);
         tree.insert(8, tree.root);
@@ -28,7 +16,22 @@ class Main {
         tree.insert(10, tree.root);
         tree.insert(13, tree.root);
 
-        System.out.println(tree.remove(9, tree.root));
+        // Método de verificação de folha
+        System.out.println("\n"+tree.isLeaf(1));
+        System.out.println(tree.isLeaf(5));
+        System.out.println(tree.isLeaf(7));
+        System.out.println(tree.isLeaf(13));
+        System.out.println(tree.isLeaf(2));
+        System.out.println(tree.isLeaf(10));
+        System.out.println(tree.isLeaf(6));
+        System.out.println(tree.isLeaf(11));
+        System.out.println(tree.isLeaf(99));
+
+
+        // Remoção
+        tree.remove(14, tree.root);
+        tree.remove(9, tree.root);
+        tree.remove(8, tree.root);
 
         System.out.print("\nPRE-ORDER: ");
         tree.preOrder(tree.root);
@@ -39,9 +42,9 @@ class Main {
         System.out.print("\nPOS-ORDER: ");
         tree.postOrder(tree.root);
 
-        System.out.println("\n"+tree.search(6));
+        System.out.println("\n\n"+tree.search(6));
 
-        tree.criarArquivoDOT(tree.root);
+        Tree.criarArquivoDOT(tree.root);
 
     }
 }

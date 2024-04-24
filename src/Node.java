@@ -7,6 +7,7 @@ public class Node {
         this.left = this.right = null;
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Node(").append(info).append(")");
