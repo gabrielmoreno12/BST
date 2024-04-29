@@ -43,6 +43,7 @@ class Main {
         tree.postOrder(tree.root);
 
         System.out.println("\n\n"+tree.search(6));
+        System.out.println(tree.height());
 
         Tree.criarArquivoDOT(tree.root);
 

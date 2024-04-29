@@ -54,33 +54,33 @@ public class Tree {
         if (node == null) {
             System.out.println("\nNode " + info + " not found");
             return null;
-        }
-
-        // Se a informação for menor que a do nó atual, procuramos na subárvore esquerda
-        if (info < node.info) {
-            node.left = remove(info, node.left);
-        }
-        // Se a informação for maior que a do nó atual, procuramos na subárvore direita
-        else if (info > node.info) {
-            node.right = remove(info, node.right);
-        }
-        // Se encontramos o nó a ser removido
-        else {
-            // Caso 1: Nó sem filhos ou com apenas um filho
-            if (node.left == null) {
-                return node.right;
-            } else if (node.right == null) {
-                return node.left;
+        } else {
+            // Se a informação for menor que a do nó atual, procuramos na subárvore esquerda
+            if (info < node.info) {
+                node.left = remove(info, node.left);
             }
-            // Caso 2: Nó com dois filhos
+            // Se a informação for maior que a do nó atual, procuramos na subárvore direita
+            else if (info > node.info) {
+                node.right = remove(info, node.right);
+            }
+            // Se encontramos o nó a ser removido
             else {
-                // Encontramos o menor valor na subárvore direita
-                node.info = findMinValue(node.right);
-                // Removemos o menor valor encontrado
-                node.right = remove(node.info, node.right);
+                // Caso 1: Nó sem filhos ou com apenas um filho
+                if (node.left == null) {
+                    return node.right;
+                } else if (node.right == null) {
+                    return node.left;
+                }
+                // Caso 2: Nó com dois filhos
+                else {
+                    // Encontramos o menor valor na subárvore direita
+                    node.info = findMinValue(node.right);
+                    // Removemos o menor valor encontrado
+                    node.right = remove(node.info, node.right);
+                }
             }
+            return node;
         }
-        return node;
     }
 
     // Encontra o menor valor na subárvore direita
@@ -110,6 +110,22 @@ public class Tree {
         }
 
         return search(place.right, info);
+    }
+
+    // Calcula a altura da árvore
+    int height() {
+        return height(root) - 1;
+    }
+
+    // Auxilia o calculo da altura
+    int height(Node node) {
+        if (node == null) {
+            return 0;
+        } else {
+            int leftHeight = height(node.left);
+            int rightHeight = height(node.right);
+            return 1 + Math.max(leftHeight, rightHeight);
+        }
     }
 
     // Apaga informações da árvore
