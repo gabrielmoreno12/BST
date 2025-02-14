@@ -4,48 +4,29 @@ class Main {
         // Criação de uma árvore nula
         Tree tree = new Tree();
 
-        // Método de inserção
-        tree.insert(2, tree.root);
-        tree.insert(1, tree.root);
-        tree.insert(8, tree.root);
-        tree.insert(6, tree.root);
-        tree.insert(5, tree.root);
-        tree.insert(9, tree.root);
-        tree.insert(7, tree.root);
+        tree.insert(50, null);   // Insere 50 como raiz
+        tree.insert(25, tree.root);  // Insere 25 como filho esquerdo de 50
+        tree.insert(75, tree.root); // Insere 75 como filho direito de 50
+        tree.insert(20, tree.root); // Insere 20 como filho esquerdo de 25
+        tree.insert(30, tree.root); // Insere 30 como filho direito de 25
+        tree.insert(70, tree.root); // Insere 70 como filho esquerdo de 75
+        tree.insert(80, tree.root); // Insere 80 como filho direito de 75
+        tree.insert(10, tree.root); // Insere 10 como filho esquerdo de 20
+        tree.insert(40, tree.root); // Insere 40 como filho direito de 30
+        tree.insert(60, tree.root); // Insere 60 como filho esquerdo de 70
+        tree.insert(90, tree.root); // Insere 90 como filho direito de 80
         tree.insert(11, tree.root);
-        tree.insert(10, tree.root);
-        tree.insert(13, tree.root);
-
-        // Método de verificação de folha
-        System.out.println("\n"+tree.isLeaf(1));
-        System.out.println(tree.isLeaf(5));
-        System.out.println(tree.isLeaf(7));
-        System.out.println(tree.isLeaf(13));
-        System.out.println(tree.isLeaf(2));
-        System.out.println(tree.isLeaf(10));
-        System.out.println(tree.isLeaf(6));
-        System.out.println(tree.isLeaf(11));
-        System.out.println(tree.isLeaf(99));
+        tree.insert(9, tree.root);
+        tree.insert(23, tree.root);
 
 
-        // Remoção
-        tree.remove(14, tree.root);
-        tree.remove(9, tree.root);
-        tree.remove(8, tree.root);
-
-        System.out.print("\nPRE-ORDER: ");
         tree.preOrder(tree.root);
-
-        System.out.print("\nIN-ORDER: ");
+        System.out.println();
         tree.inOrder(tree.root);
-
-        System.out.print("\nPOS-ORDER: ");
+        System.out.println();
         tree.postOrder(tree.root);
 
-        System.out.println("\n\n"+tree.search(6));
-        System.out.println(tree.height());
-
-        Tree.criarArquivoDOT(tree.root);
+        tree.criarArquivoDOT(tree.root);
 
     }
 }

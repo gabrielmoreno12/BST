@@ -3,7 +3,7 @@ import java.io.IOException;
 
 public class Tree {
     Node root = null;
-    int size = 0;
+    int heigth;
 
     // Inserir nó
     void insert(int info, Node place) {
@@ -11,6 +11,7 @@ public class Tree {
         if (place == null) {
             root = new Node(info);
             System.out.println("Inserted Root " + info);
+
         }
 
         /*
@@ -79,6 +80,7 @@ public class Tree {
                     node.right = remove(node.info, node.right);
                 }
             }
+            setHeigth(height());
             return node;
         }
     }
@@ -97,6 +99,7 @@ public class Tree {
         return search(root, info);
     }
 
+    // Auxilia a busca de nó
     Node search(Node place, int info) {
         if (place == null) {
             return null;
@@ -114,6 +117,7 @@ public class Tree {
 
     // Calcula a altura da árvore
     int height() {
+        heigth = height(root) - 1;
         return height(root) - 1;
     }
 
@@ -127,6 +131,48 @@ public class Tree {
             return 1 + Math.max(leftHeight, rightHeight);
         }
     }
+
+    int balanceFactor(Node root) {
+        return height(root.left) - height(root.right);
+    }
+
+    // Verifca se a árvore é balanceada
+    boolean isBalanced(Node node) {
+        // Se o nó atual for nulo, é considerado balanceado
+        if (node == null) {
+            return true;
+        }
+
+        // Calcula o fator de balanceamento do nó atual
+        int bFac = balanceFactor(node);
+
+        // Verifica se o nó atual é balanceado
+        if (bFac < -1 || bFac > 1) {
+            return false;
+        }
+
+        // Verifica recursivamente se os subnós também são balanceados
+        return isBalanced(node.left) && isBalanced(node.right);
+    }
+
+    Node doRightRotation (Node node) {
+        Node rotated = node.left;
+        node.left = rotated.right;
+        rotated.right = rotated;
+        node.setHeight(1 + Math.max(height(node.left), height(node.right)));
+        rotated.setHeight(1 + Math.max(height(node.left), height(node.right)));
+        return rotated;
+    }
+
+    Node doLeftRotation (Node node) {
+        Node rotated = node.right;
+        node.right = rotated.left;
+        rotated.left = rotated;
+        node.setHeight(1 + Math.max(height(node.left), height(node.right)));
+        rotated.setHeight(1 + Math.max(height(node.left), height(node.right)));
+        return rotated;
+    }
+
 
     // Apaga informações da árvore
     void clear() {
@@ -166,6 +212,15 @@ public class Tree {
             postOrder(place.right);
             System.out.print(" " + place.info);
         }
+    }
+
+    // Retorna a altura da árvore
+    public int getTreeHeigth() {
+        return heigth;
+    }
+
+    public void setHeigth(int heigth) {
+        this.heigth = heigth;
     }
 
     // Criar um arquivo .dot com a estrutura da árvore

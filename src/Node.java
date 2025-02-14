@@ -1,10 +1,20 @@
 public class Node {
     int info;
     Node left, right;
+    int height;
 
     Node(int info) {
         this.info = info;
         this.left = this.right = null;
+        this.height = 0;
+    }
+
+    int getHeight() {
+        return height;
+    }
+
+    void setHeight(int height) {
+        this.height = height;
     }
 
     @Override
